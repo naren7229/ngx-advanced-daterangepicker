@@ -45,7 +45,6 @@ import { NgxAdvancedDaterangepickerService } from './ngx-advanced-daterangepicke
   selector: 'ngx-advanced-daterangepicker',
   templateUrl: './ngx-advanced-daterangepicker.component.html',
   styleUrls: ['./ngx-advanced-daterangepicker.component.scss'],
-  standalone: true,
   imports: [DatePipe, MatButton, MatCalendar, MatDivider, MatDialogClose, MatDialogActions, NgClass, NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -67,10 +66,10 @@ import { NgxAdvancedDaterangepickerService } from './ngx-advanced-daterangepicke
 export class NgxAdvancedDaterangepickerComponent implements OnInit, OnChanges {
   private dRef!: MatDialogRef<unknown>;
 
-  private dialog: MatDialog = inject(MatDialog);
-  private readonly selectionModel: MatRangeDateSelectionModel<Date> = inject(MatRangeDateSelectionModel<Date>);
-  private readonly selectionStrategy: DefaultMatCalendarRangeStrategy<Date> = inject(DefaultMatCalendarRangeStrategy<Date>);
-  private dateRangePickerService = inject(NgxAdvancedDaterangepickerService);
+  readonly dialog: MatDialog = inject(MatDialog);
+  readonly selectionModel: MatRangeDateSelectionModel<Date> = inject(MatRangeDateSelectionModel<Date>);
+  readonly selectionStrategy: DefaultMatCalendarRangeStrategy<Date> = inject(DefaultMatCalendarRangeStrategy<Date>);
+  readonly dateRangePickerService: NgxAdvancedDaterangepickerService = inject(NgxAdvancedDaterangepickerService);
 
   calendar: Signal<MatCalendar<Date> | undefined> = viewChild('calendar', { read: MatCalendar });
 
